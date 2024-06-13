@@ -12,8 +12,9 @@ function IPC() {
   const [pageNumber, setPageNumber] = useState(0);
 
   const [showModel, setShowModel ] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(0);
 
-  const usersPerPage = 10;
+  const usersPerPage = 14;
   const pagesVisited = pageNumber * usersPerPage;
 
   const pageCount = Math.ceil(users.length / usersPerPage);
@@ -53,8 +54,13 @@ function IPC() {
           
             <h3 className='text-center p-5 '>Section {user.Section}</h3>
             
-            <button className='py-10' onClick={()=> setShowModel(true)} > View More </button>
-            { showModel && <Model onClose={()=> setShowModel(false)} /> }
+            <button className='py-10' onClick={()=> {
+              setShowModel(true) 
+              setSelectedUser(user.id);
+            }
+          
+            } > View More   </button>
+            { showModel && <Model onClose={()=> setShowModel(false)} users={users}  selectedUser={ selectedUser }  /> }
         </div>
       ))}
      
