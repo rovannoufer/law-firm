@@ -7,7 +7,7 @@ import image from "../img/3.jpg"
 import Model from './model';
 
 
-function IPC() {
+function Law(props) {
   const [users, setUsers] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -18,7 +18,7 @@ function IPC() {
   const pagesVisited = pageNumber * usersPerPage;
 
   const pageCount = Math.ceil(users.length / usersPerPage);
-  const add = "ipc";
+  let law = props.type;
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -27,7 +27,7 @@ function IPC() {
   useEffect( ()=>{
     const fetchData = async () => {
         try {
-          const response = await fetch(`src/${add}.json`); 
+          const response = await fetch(`src/json/${law}.json`); 
           const jsonData = await response.json(); 
           setUsers(jsonData); 
         } catch (err) {
@@ -35,7 +35,7 @@ function IPC() {
         }
       };
       fetchData();
-  },[]);
+  },[users]);
 
   return (
     <>
@@ -52,7 +52,7 @@ function IPC() {
          <div className='flex flex-col basis-[10%] w-20 m-10  rounded-lg shadow-xl' key={i}>
             <img src={image} className='rounded-lg'/>
           
-            <h3 className='text-center p-5 '>Section {user.Section}</h3>
+            <h3 className='text-center p-5 '>Section {user.Section || user.section}</h3>
             
             <button className='py-10' onClick={()=> {
               setShowModel(true) 
@@ -83,4 +83,4 @@ function IPC() {
   )
 }
 
-export default IPC;
+export default Law;
