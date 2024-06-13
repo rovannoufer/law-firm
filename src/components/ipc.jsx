@@ -41,17 +41,20 @@ function IPC() {
     <>
        <div className='flex justify-between'>
       {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
-        <div className='flex flex-col w-22 my-10 mx-10  rounded-lg shadow-xl' key={i}>
+        <>
+         <div className='flex flex-col w-22 my-10 mx-10  rounded-lg shadow-xl' key={i}>
           <img src={image} className='rounded-lg'/>
           {/* <h1 className='text-center text-base'> Section </h1> */}
           <h3 className='text-center p-5 '>Section {user.Section}</h3>
-          <h3 className='text-center border-b-2 border-t-2 p-2'>{user.section_title+ " " + (i + pagesVisited)}</h3>
-          <button className='text-center py-10'> View More </button>
+          {/* <h3 className='text-center border-b-2 border-t-2 p-2'>{user.section_title+ " " + (i + pagesVisited)}</h3> */}
+          <button className='text-center py-10' onClick={()=>{alert("nofuer")}}> View More </button>
         </div>
+        
+        </>
       ))}
      
     </div>
-    <div className='user'>
+    <div className='flex justify-center items-center mt-[30px] '>
          <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
