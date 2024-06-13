@@ -1,5 +1,5 @@
 import React from 'react'
-import image from "../img/2.jpg"
+import image from '../img/1.jpg'
 
 function Landing() {
   return (
@@ -21,7 +21,7 @@ function Landing() {
 
        
     </div>
-     <div className={`bg-[url(${image})]  text-center text-3xl mt-16 p-5 text-center`}>
+     <div className={`bg-[url(${image})]  text-3xl mt-16 p-5 text-center`}>
      <p> “The law should be clear, concise, and easy to understand.” – Thomas Jefferson </p>
  </div>
   </>

@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import "../App.css"
-import JsonData from "../ipc.json";
-import ReactPaginate from "react-paginate"; // assuming ReactPaginate is a default export
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import ReactPaginate from "react-paginate"; 
 import image from "../img/3.jpg"
+
+
 function IPC() {
   const [users, setUsers] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 5;
+  const usersPerPage = 14;
   const pagesVisited = pageNumber * usersPerPage;
 
   const pageCount = Math.ceil(users.length / usersPerPage);
@@ -20,18 +23,11 @@ function IPC() {
   useEffect( ()=>{
     const fetchData = async () => {
         try {
-          const response = await fetch(`src/${add}.json`); // Fetch JSON data
-  
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-  
-          const jsonData = await response.json(); // Parse JSON data
-          console.log(jsonData)
-          setUsers(jsonData); // Update data state
+          const response = await fetch(`src/${add}.json`); 
+          const jsonData = await response.json(); 
+          setUsers(jsonData); 
         } catch (err) {
           console.log('Error fetching data:', err);
-           // Update error state for potential UI handling
         }
       };
       fetchData();
@@ -39,15 +35,22 @@ function IPC() {
 
   return (
     <>
-       <div className='flex justify-between'>
-      {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
+
+       <div className='relative flex justify-center m-10 h-10'> 
+         <input type='text' placeholder='Search' className='p-5 rounded-xl w-80 border border-black ' />
+          <button className='absolute mt-2 pl-64'
+          > 
+          <FontAwesomeIcon icon={faMagnifyingGlass}  /> </button>
+       </div>
+       <div className='flex justify-around flex-wrap'>
+           {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
         <>
-         <div className='flex flex-col w-22 my-10 mx-10  rounded-lg shadow-xl' key={i}>
-          <img src={image} className='rounded-lg'/>
-          {/* <h1 className='text-center text-base'> Section </h1> */}
-          <h3 className='text-center p-5 '>Section {user.Section}</h3>
-          {/* <h3 className='text-center border-b-2 border-t-2 p-2'>{user.section_title+ " " + (i + pagesVisited)}</h3> */}
-          <button className='text-center py-10' onClick={()=>{alert("nofuer")}}> View More </button>
+         <div className='flex flex-col basis-[10%] w-20 m-10  rounded-lg shadow-xl' key={i}>
+            <img src={image} className='rounded-lg'/>
+          
+            <h3 className='text-center p-5 '>Section {user.Section}</h3>
+            
+            <button className='py-10' onClick={()=>{alert("nofuer")}}> View More </button>
         </div>
         
         </>
