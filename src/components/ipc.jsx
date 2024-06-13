@@ -4,13 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from "react-paginate"; 
 import image from "../img/3.jpg"
+import Model from './model';
 
 
 function IPC() {
   const [users, setUsers] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 14;
+  const [showModel, setShowModel ] = useState(false);
+
+  const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
 
   const pageCount = Math.ceil(users.length / usersPerPage);
@@ -42,18 +45,17 @@ function IPC() {
           > 
           <FontAwesomeIcon icon={faMagnifyingGlass}  /> </button>
        </div>
-       <div className='flex justify-around flex-wrap'>
+       <div className='flex flex-wrap justify-around'>
            {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
-        <>
+       
          <div className='flex flex-col basis-[10%] w-20 m-10  rounded-lg shadow-xl' key={i}>
             <img src={image} className='rounded-lg'/>
           
             <h3 className='text-center p-5 '>Section {user.Section}</h3>
             
-            <button className='py-10' onClick={()=>{alert("nofuer")}}> View More </button>
+            <button className='py-10' onClick={()=> setShowModel(true)} > View More </button>
+            { showModel && <Model onClose={()=> setShowModel(false)} /> }
         </div>
-        
-        </>
       ))}
      
     </div>

@@ -21,7 +21,7 @@ function Landing() {
 
        
     </div>
-     <div className={`bg-[url(${image})]  text-3xl mt-16 p-5 text-center`}>
+     <div className={`text-3xl mt-16 p-5 text-center`}>
      <p> “The law should be clear, concise, and easy to understand.” – Thomas Jefferson </p>
  </div>
   </>
