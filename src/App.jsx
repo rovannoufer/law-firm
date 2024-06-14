@@ -22,12 +22,8 @@ function App() {
               <Route path='/mva' element={ <Law type={"mva"} />}/>
               <Route path='/nia' element={ <Law type={"nia"} />}/>
 
-              
-              
-
-
+              <Route path="*" element={<Error404 />} />
           </Route>
-          <Route path="*" element={<Error404 />} />
       </Routes>
     
     </BrowserRouter>
