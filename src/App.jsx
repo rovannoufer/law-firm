@@ -3,6 +3,7 @@ import Landing from './components/landing'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import Law from './components/law';
+import Error404 from './pages/error';
 
 
 
@@ -21,7 +22,12 @@ function App() {
               <Route path='/mva' element={ <Law type={"mva"} />}/>
               <Route path='/nia' element={ <Law type={"nia"} />}/>
 
+              
+              
+
+
           </Route>
+          <Route path="*" element={<Error404 />} />
       </Routes>
     
     </BrowserRouter>
