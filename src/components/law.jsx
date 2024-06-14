@@ -6,6 +6,7 @@ import ReactPaginate from "react-paginate";
 import image from "../img/3.jpg"
 import Model from './model';
 import SearchModel from './searchmodel';
+import { Toaster, toast } from "react-hot-toast";
 
 
 function Law(props) {
@@ -29,15 +30,16 @@ function Law(props) {
   const handleSearch =(event) =>{
     // console.log(searchRef.current.value);
     const find = searchRef.current.value.toUpperCase();
-    const searchUsers = users.filter(user => user.section == find || user.Section == find);
+    try{const searchUsers = users.filter(user => user.section == find || user.Section == find);
     let searchId = searchUsers[0].id;
-    if(searchUser>0){
+    
+    if(searchUsers){
       setSearchUser(searchUsers);
       setSearchShowModel(true);
+    }}catch(err){
+      toast.error("The law is not defined")
     }
-    else{
-      
-    }
+   
     
   }
   
@@ -61,7 +63,7 @@ function Law(props) {
 
   return (
     <>
-      
+       <Toaster />
        <div className='relative flex justify-center m-10 h-10'> 
         
          <input type='text' ref={searchRef} placeholder={`Search ${law.toUpperCase()}`} className=' absolute  p-5 rounded-xl w-80 h-10 border border-black ' />
