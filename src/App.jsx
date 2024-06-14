@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Landing from './components/landing'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import Law from './components/law';
 import Error404 from './pages/error';
+import Loading from './components/loading';
+
 
 
 
 function App() {
+
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(()=>{
+ 
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    },1000)
+  },[])
+
   return (
    <>
-    <BrowserRouter> 
+    {
+      loading ? <Loading /> :
+      <BrowserRouter> 
       <Routes>
           <Route path='/' element={<Home />}>
               <Route path='/' element={ <Landing />}/>
@@ -26,7 +41,8 @@ function App() {
           </Route>
       </Routes>
     
-    </BrowserRouter>
+    </BrowserRouter> 
+    }
    </>
   )
 }
