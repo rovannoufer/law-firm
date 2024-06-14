@@ -10,6 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 import Loading from './loading';
 
 
+
 function Law(props) {
   const [users, setUsers] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
