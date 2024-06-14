@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import image from "../img/law.jpg"
 
 function Header() {
 
@@ -10,7 +11,7 @@ function Header() {
          <NavLink to={'/'} >   
           <div className='flex flex-col top-0 items-center'> 
             
-            <img src='src\img\law.jpg' className='w-24'/>
+            <img src= {image} className='w-24'/>
             <p className='text-base font-bold'> LAW FIRM </p>
           </div>
           </NavLink>

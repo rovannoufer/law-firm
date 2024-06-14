@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from "react-paginate"; 
 import image from "../img/3.jpg"
 import Model from './model';
+import SearchModel from './searchmodel';
 
 
 function Law(props) {
@@ -13,12 +14,33 @@ function Law(props) {
 
   const [showModel, setShowModel ] = useState(false);
   const [selectedUser, setSelectedUser] = useState(0);
+  const [searchShowModel,setSearchShowModel] = useState(false);
+  const [searchUser, setSearchUser] = useState([]);
 
   const usersPerPage = 14;
   const pagesVisited = pageNumber * usersPerPage;
 
+  let searchId
   const pageCount = Math.ceil(users.length / usersPerPage);
   let law = props.type;
+
+  const searchRef = useRef(null)
+
+  const handleSearch =(event) =>{
+    // console.log(searchRef.current.value);
+    const find = searchRef.current.value.toUpperCase();
+    const searchUsers = users.filter(user => user.section == find || user.Section == find);
+    let searchId = searchUsers[0].id;
+    if(searchUser>0){
+      setSearchUser(searchUsers);
+      setSearchShowModel(true);
+    }
+    else{
+      
+    }
+    
+  }
+  
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -39,12 +61,16 @@ function Law(props) {
 
   return (
     <>
-
+      
        <div className='relative flex justify-center m-10 h-10'> 
-         <input type='text' placeholder='Search' className='p-5 rounded-xl w-80 border border-black ' />
-          <button className='absolute mt-2 pl-64'
+        
+         <input type='text' ref={searchRef} placeholder={`Search ${law.toUpperCase()}`} className=' absolute  p-5 rounded-xl w-80 h-10 border border-black ' />
+          <button className='relative'
+          onClick={handleSearch} 
           > 
-          <FontAwesomeIcon icon={faMagnifyingGlass}  /> </button>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className='absolute left-32 bottom-3' /> </button>
+
+          { searchShowModel && <SearchModel onClose={()=> setSearchShowModel(false)} searchUser ={ searchUser } /> }
        </div>
        <div className='flex flex-wrap justify-around'>
            {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
@@ -60,7 +86,7 @@ function Law(props) {
             }
           
             } > View More   </button>
-            { showModel && <Model onClose={()=> setShowModel(false)} users={users}  selectedUser={ selectedUser }  /> }
+            { showModel && <Model onClose={()=> setShowModel(false)} users={users}  selectedUser={ selectedUser }  flag = {true} /> }
         </div>
       ))}
      
