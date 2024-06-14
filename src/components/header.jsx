@@ -20,7 +20,7 @@ function Header() {
           </NavLink>
         
 
-         <div className={`absolute ${ toggle ? " -top-full" :  " top-[152px]"} z-[1] left-0 w-full text-white flex flex-col items-center justify-center p-10 gap-4 bg-black  lg:static lg:flex-row lg:bg-white lg:justify-end`}> 
+         <div className={`absolute ${ toggle ? " -top-full" :  " top-[152px]"} z-[1] left-0 w-full text-white flex flex-col items-center justify-center p-10 gap-4 bg-black  lg:static lg:flex-row lg:bg-transparent lg:justify-end`}> 
 
            <NavLink to={'/ipc'} className={`border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white`} > IPC </NavLink>
            <NavLink to={'/crpc'} className={" border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white"}> CRPC  </NavLink>

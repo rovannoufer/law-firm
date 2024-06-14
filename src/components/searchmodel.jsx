@@ -7,7 +7,7 @@ function SearchModel({onClose, searchUser, searchId}) {
   return (
     <>
      <div className='fixed inset-0 bg-opacity-5 bg-black flex items-center justify-center' onClick={onClose}>
-       <div className='mt-10 flex flex-col gap-5 text-white w-[50%]'>
+       <div className='flex flex-col gap-5 text-white lg:w-[50%] '>
            <button className='place-self-end bg-black rounded-3xl' onClick={onClose}> <X size={30}/> </button>
            <div className='bg-black rounded-xl px-20 py-10 flex flex-col gap-5 text-white'>
                 

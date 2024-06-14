@@ -62,9 +62,9 @@ function Law(props) {
   },[users]);
 
   return (
-    <>
+    <div className='mb-11'>
        <Toaster />
-       <div className='relative flex justify-center m-10 h-10'> 
+       <div className='relative flex justify-center m-10 h-10 '> 
         
          <input type='text' ref={searchRef} placeholder={`Search ${law.toUpperCase()}`} className=' absolute  p-5 rounded-xl w-80 h-10 border border-black ' />
           <button className='relative'
@@ -74,10 +74,10 @@ function Law(props) {
 
           { searchShowModel && <SearchModel onClose={()=> setSearchShowModel(false)} searchUser ={ searchUser } /> }
        </div>
-       <div className='flex flex-wrap justify-around'>
+       <div className='flex flex-wrap justify-around '>
            {users.slice(pagesVisited, pagesVisited + usersPerPage).map((user, i) => (
        
-         <div className='flex flex-col basis-[10%] w-20 m-10  rounded-lg shadow-xl' key={i}>
+         <div className='flex flex-col lg:basis-[10%] w-48 lg:w-20 m-10 rounded-lg shadow-xl' key={i}>
             <img src={image} className='rounded-lg'/>
           
             <h3 className='text-center p-5 '>Section {user.Section || user.section}</h3>
@@ -93,7 +93,7 @@ function Law(props) {
       ))}
      
     </div>
-    <div className='flex justify-center items-center mt-[30px] '>
+    <div className='flex justify-center items-center mt-[30px]'>
          <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -107,7 +107,7 @@ function Law(props) {
       />
     </div>
     
-    </>
+    </div>
   )
 }
 

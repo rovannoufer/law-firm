@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='sticky top-0 bottom-0'>
+    <div className='fixed inset-x-0 bottom-0 p-5 lg:p-0'>
     <p className='text-center text-bold'>© Copyright 2024 LAW FIRM , created using React Js </p>
 </div>
   )
