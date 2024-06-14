@@ -1,6 +1,6 @@
 import React from 'react'
 import image from '../img/1.jpg'
-import Loading from './loading';
+
 
 function Landing() {
 

@@ -39,7 +39,7 @@ function Law(props) {
       setSearchUser(searchUsers);
       setSearchShowModel(true);
     }}catch(err){
-      toast.error("The law is not defined")
+      toast.error("This Law is undefined")
     }
    
     
