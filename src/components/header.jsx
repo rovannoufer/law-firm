@@ -12,7 +12,7 @@ function Header() {
 
 
     <>
-      <div className='flex justify-between p-4 border-b border-black '>
+      <div className='flex justify-between p-4  border-black shadow-xl '>
         
          <NavLink to={'/'} >   
           <div className='flex flex-col top-0 items-center'> 
