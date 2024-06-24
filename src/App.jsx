@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Law from './components/law';
 import Error404 from './pages/error';
 import Loading from './components/loading';
+import About from './pages/about';
 
 
 
@@ -36,6 +37,7 @@ function App() {
               <Route path='/cpc' element={ <Law type={"cpc"} />}/>
               <Route path='/mva' element={ <Law type={"mva"} />}/>
               <Route path='/nia' element={ <Law type={"nia"} />}/>
+              <Route path='/about' element={ <About />}/>
 
               <Route path="*" element={<Error404 />} />
           </Route>

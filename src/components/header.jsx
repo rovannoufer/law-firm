@@ -32,6 +32,7 @@ function Header() {
            <NavLink to={'/cpc'} className={" border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white"}> CPC  </NavLink>
            <NavLink to={'/mva'} className={" border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white"}> MVA  </NavLink>
            <NavLink to={'/nia'} className={" border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white"}> NIA  </NavLink>
+           <NavLink to={'/about'} className={" border-gray-300 border-2 p-2 rounded-xl text-center w-20 lg:text-black sm:text-white"}> About  </NavLink>
         
 
             

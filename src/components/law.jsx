@@ -28,12 +28,13 @@ function Law(props) {
 
   const searchRef = useRef(null);
 
-  const handleSearch = () => {
+  const handleSearch = async() => {
     const find = searchRef.current.value.toUpperCase();
     try {
-      const searchUsers = users.filter(user => user.section == find);
-      if (searchUsers.length > 0) {
-        setSearchUser(searchUsers);
+      const searchUsers = await axios.get(`https://law-firm-server.onrender.com/search?section=${find}&collectionName=${law}`);
+     
+      if (searchUsers) {
+        setSearchUser(searchUsers.data);
         setSearchShowModel(true);
       } else {
         toast.error("This Law is undefined");
@@ -51,7 +52,7 @@ function Law(props) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const result = await axios.get(`http://localhost:5000/fetch/${law}`);
+        const result = await axios.get(`https://law-firm-server.onrender.com/fetch/${law}`);
         setUsers(result.data);
         setLoading(false);
       } catch (err) {
@@ -59,7 +60,7 @@ function Law(props) {
         setLoading(false);
       }
     };
-    fetchData();
+    fetchData()    
   }, [law]);
 
   useEffect(() => {
@@ -68,6 +69,9 @@ function Law(props) {
       setLoading(false);
     }, 2000);
   }, []);
+
+
+  
 
   return (
     <>
@@ -107,7 +111,7 @@ function Law(props) {
               </div>
             ))}
           </div>
-          <div className="flex justify-center items-center mt-[30px]">
+          <div className="flex justify-center items-center mt-[30px] mb-24 lg:mb-0">
             <ReactPaginate
               previousLabel={"Previous"}
               nextLabel={"Next"}
